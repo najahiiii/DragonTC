@@ -21,6 +21,7 @@
   __interceptor_asctime;
   __interceptor_asctime_r;
   __interceptor_asprintf;
+  __interceptor_bcmp;
   __interceptor_bind;
   __interceptor_bsd_signal;
   __interceptor_calloc;
@@ -220,6 +221,7 @@
   __interceptor_readlinkat;
   __interceptor_readv;
   __interceptor_realloc;
+  __interceptor_reallocarray;
   __interceptor_realpath;
   __interceptor_recv;
   __interceptor_recvfrom;
@@ -308,6 +310,7 @@
   __interceptor_tmpfile;
   __interceptor_tmpfile64;
   __interceptor_tmpnam;
+  __interceptor_ttyname;
   __interceptor_ttyname_r;
   __interceptor_unlink;
   __interceptor_usleep;
@@ -1039,6 +1042,7 @@
   asctime;
   asctime_r;
   asprintf;
+  bcmp;
   bind;
   bsd_signal;
   calloc;
@@ -1231,6 +1235,7 @@
   readlinkat;
   readv;
   realloc;
+  reallocarray;
   recv;
   recvfrom;
   recvmmsg;
@@ -1318,6 +1323,7 @@
   tmpfile;
   tmpfile64;
   tmpnam;
+  ttyname;
   ttyname_r;
   unlink;
   usleep;

@@ -48,6 +48,7 @@
   __sanitizer_print_stack_trace;
   __sanitizer_pvalloc;
   __sanitizer_realloc;
+  __sanitizer_reallocarray;
   __sanitizer_report_error_summary;
   __sanitizer_sandbox_on_notify;
   __sanitizer_set_death_callback;

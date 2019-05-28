@@ -81,6 +81,8 @@
     experimental_constrained_floor,            // llvm.experimental.constrained.floor
     experimental_constrained_fma,              // llvm.experimental.constrained.fma
     experimental_constrained_fmul,             // llvm.experimental.constrained.fmul
+    experimental_constrained_fpext,            // llvm.experimental.constrained.fpext
+    experimental_constrained_fptrunc,          // llvm.experimental.constrained.fptrunc
     experimental_constrained_frem,             // llvm.experimental.constrained.frem
     experimental_constrained_fsub,             // llvm.experimental.constrained.fsub
     experimental_constrained_log,              // llvm.experimental.constrained.log
@@ -142,6 +144,7 @@
     launder_invariant_group,                   // llvm.launder.invariant.group
     lifetime_end,                              // llvm.lifetime.end
     lifetime_start,                            // llvm.lifetime.start
+    llround,                                   // llvm.llround
     load_relative,                             // llvm.load.relative
     localaddress,                              // llvm.localaddress
     localescape,                               // llvm.localescape
@@ -150,6 +153,7 @@
     log10,                                     // llvm.log10
     log2,                                      // llvm.log2
     longjmp,                                   // llvm.longjmp
+    lround,                                    // llvm.lround
     masked_compressstore,                      // llvm.masked.compressstore
     masked_expandload,                         // llvm.masked.expandload
     masked_gather,                             // llvm.masked.gather
@@ -216,6 +220,7 @@
     sigsetjmp,                                 // llvm.sigsetjmp
     sin,                                       // llvm.sin
     smul_fix,                                  // llvm.smul.fix
+    smul_fix_sat,                              // llvm.smul.fix.sat
     smul_with_overflow,                        // llvm.smul.with.overflow
     sponentry,                                 // llvm.sponentry
     sqrt,                                      // llvm.sqrt
@@ -1088,6 +1093,10 @@
     arm_cdp,                                   // llvm.arm.cdp
     arm_cdp2,                                  // llvm.arm.cdp2
     arm_clrex,                                 // llvm.arm.clrex
+    arm_cmse_tt,                               // llvm.arm.cmse.tt
+    arm_cmse_tta,                              // llvm.arm.cmse.tta
+    arm_cmse_ttat,                             // llvm.arm.cmse.ttat
+    arm_cmse_ttt,                              // llvm.arm.cmse.ttt
     arm_crc32b,                                // llvm.arm.crc32b
     arm_crc32cb,                               // llvm.arm.crc32cb
     arm_crc32ch,                               // llvm.arm.crc32ch
@@ -6490,6 +6499,15 @@
     x86_avx512_vpshufbitqmb_128,               // llvm.x86.avx512.vpshufbitqmb.128
     x86_avx512_vpshufbitqmb_256,               // llvm.x86.avx512.vpshufbitqmb.256
     x86_avx512_vpshufbitqmb_512,               // llvm.x86.avx512.vpshufbitqmb.512
+    x86_avx512bf16_cvtne2ps2bf16_128,          // llvm.x86.avx512bf16.cvtne2ps2bf16.128
+    x86_avx512bf16_cvtne2ps2bf16_256,          // llvm.x86.avx512bf16.cvtne2ps2bf16.256
+    x86_avx512bf16_cvtne2ps2bf16_512,          // llvm.x86.avx512bf16.cvtne2ps2bf16.512
+    x86_avx512bf16_cvtneps2bf16_256,           // llvm.x86.avx512bf16.cvtneps2bf16.256
+    x86_avx512bf16_cvtneps2bf16_512,           // llvm.x86.avx512bf16.cvtneps2bf16.512
+    x86_avx512bf16_dpbf16ps_128,               // llvm.x86.avx512bf16.dpbf16ps.128
+    x86_avx512bf16_dpbf16ps_256,               // llvm.x86.avx512bf16.dpbf16ps.256
+    x86_avx512bf16_dpbf16ps_512,               // llvm.x86.avx512bf16.dpbf16ps.512
+    x86_avx512bf16_mask_cvtneps2bf16_128,      // llvm.x86.avx512bf16.mask.cvtneps2bf16.128
     x86_bmi_bextr_32,                          // llvm.x86.bmi.bextr.32
     x86_bmi_bextr_64,                          // llvm.x86.bmi.bextr.64
     x86_bmi_bzhi_32,                           // llvm.x86.bmi.bzhi.32

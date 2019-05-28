@@ -225,6 +225,16 @@ set_target_properties(clangToolingASTDiff PROPERTIES
 list(APPEND _IMPORT_CHECK_TARGETS clangToolingASTDiff )
 list(APPEND _IMPORT_CHECK_FILES_FOR_clangToolingASTDiff "${_IMPORT_PREFIX}/lib64/libclangToolingASTDiff.a" )
 
+# Import target "clangToolingSyntax" for configuration "Release"
+set_property(TARGET clangToolingSyntax APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+set_target_properties(clangToolingSyntax PROPERTIES
+  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
+  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib64/libclangToolingSyntax.a"
+  )
+
+list(APPEND _IMPORT_CHECK_TARGETS clangToolingSyntax )
+list(APPEND _IMPORT_CHECK_FILES_FOR_clangToolingSyntax "${_IMPORT_PREFIX}/lib64/libclangToolingSyntax.a" )
+
 # Import target "clangTooling" for configuration "Release"
 set_property(TARGET clangTooling APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(clangTooling PROPERTIES
@@ -349,6 +359,16 @@ set_target_properties(clang-refactor PROPERTIES
 
 list(APPEND _IMPORT_CHECK_TARGETS clang-refactor )
 list(APPEND _IMPORT_CHECK_FILES_FOR_clang-refactor "${_IMPORT_PREFIX}/bin/clang-refactor" )
+
+# Import target "clang_shared" for configuration "Release"
+set_property(TARGET clang_shared APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+set_target_properties(clang_shared PROPERTIES
+  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib64/libclang_shared.so.9svn"
+  IMPORTED_SONAME_RELEASE "libclang_shared.so.9svn"
+  )
+
+list(APPEND _IMPORT_CHECK_TARGETS clang_shared )
+list(APPEND _IMPORT_CHECK_FILES_FOR_clang_shared "${_IMPORT_PREFIX}/lib64/libclang_shared.so.9svn" )
 
 # Import target "clangApplyReplacements" for configuration "Release"
 set_property(TARGET clangApplyReplacements APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)

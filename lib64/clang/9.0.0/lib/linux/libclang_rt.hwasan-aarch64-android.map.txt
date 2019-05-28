@@ -6,6 +6,7 @@ LIBCLANG_RT_ASAN {
     __hwasan_enable_allocator_tagging;
     __hwasan_generate_tag;
     __hwasan_handle_longjmp;
+    __hwasan_handle_vfork;
     __hwasan_init;
     __hwasan_init_frames;
     __hwasan_init_static;
@@ -94,6 +95,7 @@ LIBCLANG_RT_ASAN {
     __sanitizer_print_stack_trace;
     __sanitizer_pvalloc;
     __sanitizer_realloc;
+    __sanitizer_reallocarray;
     __sanitizer_report_error_summary;
     __sanitizer_sandbox_on_notify;
     __sanitizer_set_death_callback;

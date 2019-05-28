@@ -1229,6 +1229,12 @@ SHUFFLEVECTOREXPR(ShuffleVectorExpr, Expr)
 SIZEOFPACKEXPR(SizeOfPackExpr, Expr)
 #undef SIZEOFPACKEXPR
 
+#ifndef SOURCELOCEXPR
+#  define SOURCELOCEXPR(Type, Base) EXPR(Type, Base)
+#endif
+SOURCELOCEXPR(SourceLocExpr, Expr)
+#undef SOURCELOCEXPR
+
 #ifndef STMTEXPR
 #  define STMTEXPR(Type, Base) EXPR(Type, Base)
 #endif

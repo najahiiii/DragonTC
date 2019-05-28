@@ -504,16 +504,6 @@ set_target_properties(LLVMAArch64Disassembler PROPERTIES
 list(APPEND _IMPORT_CHECK_TARGETS LLVMAArch64Disassembler )
 list(APPEND _IMPORT_CHECK_FILES_FOR_LLVMAArch64Disassembler "${_IMPORT_PREFIX}/lib64/libLLVMAArch64Disassembler.a" )
 
-# Import target "LLVMAArch64AsmPrinter" for configuration "Release"
-set_property(TARGET LLVMAArch64AsmPrinter APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMAArch64AsmPrinter PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib64/libLLVMAArch64AsmPrinter.a"
-  )
-
-list(APPEND _IMPORT_CHECK_TARGETS LLVMAArch64AsmPrinter )
-list(APPEND _IMPORT_CHECK_FILES_FOR_LLVMAArch64AsmPrinter "${_IMPORT_PREFIX}/lib64/libLLVMAArch64AsmPrinter.a" )
-
 # Import target "LLVMAArch64Desc" for configuration "Release"
 set_property(TARGET LLVMAArch64Desc APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(LLVMAArch64Desc PROPERTIES
@@ -573,16 +563,6 @@ set_target_properties(LLVMARMDisassembler PROPERTIES
 
 list(APPEND _IMPORT_CHECK_TARGETS LLVMARMDisassembler )
 list(APPEND _IMPORT_CHECK_FILES_FOR_LLVMARMDisassembler "${_IMPORT_PREFIX}/lib64/libLLVMARMDisassembler.a" )
-
-# Import target "LLVMARMAsmPrinter" for configuration "Release"
-set_property(TARGET LLVMARMAsmPrinter APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMARMAsmPrinter PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib64/libLLVMARMAsmPrinter.a"
-  )
-
-list(APPEND _IMPORT_CHECK_TARGETS LLVMARMAsmPrinter )
-list(APPEND _IMPORT_CHECK_FILES_FOR_LLVMARMAsmPrinter "${_IMPORT_PREFIX}/lib64/libLLVMARMAsmPrinter.a" )
 
 # Import target "LLVMARMDesc" for configuration "Release"
 set_property(TARGET LLVMARMDesc APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
@@ -644,16 +624,6 @@ set_target_properties(LLVMBPFDisassembler PROPERTIES
 list(APPEND _IMPORT_CHECK_TARGETS LLVMBPFDisassembler )
 list(APPEND _IMPORT_CHECK_FILES_FOR_LLVMBPFDisassembler "${_IMPORT_PREFIX}/lib64/libLLVMBPFDisassembler.a" )
 
-# Import target "LLVMBPFAsmPrinter" for configuration "Release"
-set_property(TARGET LLVMBPFAsmPrinter APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMBPFAsmPrinter PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib64/libLLVMBPFAsmPrinter.a"
-  )
-
-list(APPEND _IMPORT_CHECK_TARGETS LLVMBPFAsmPrinter )
-list(APPEND _IMPORT_CHECK_FILES_FOR_LLVMBPFAsmPrinter "${_IMPORT_PREFIX}/lib64/libLLVMBPFAsmPrinter.a" )
-
 # Import target "LLVMBPFDesc" for configuration "Release"
 set_property(TARGET LLVMBPFDesc APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(LLVMBPFDesc PROPERTIES
@@ -703,16 +673,6 @@ set_target_properties(LLVMX86Disassembler PROPERTIES
 
 list(APPEND _IMPORT_CHECK_TARGETS LLVMX86Disassembler )
 list(APPEND _IMPORT_CHECK_FILES_FOR_LLVMX86Disassembler "${_IMPORT_PREFIX}/lib64/libLLVMX86Disassembler.a" )
-
-# Import target "LLVMX86AsmPrinter" for configuration "Release"
-set_property(TARGET LLVMX86AsmPrinter APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(LLVMX86AsmPrinter PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib64/libLLVMX86AsmPrinter.a"
-  )
-
-list(APPEND _IMPORT_CHECK_TARGETS LLVMX86AsmPrinter )
-list(APPEND _IMPORT_CHECK_FILES_FOR_LLVMX86AsmPrinter "${_IMPORT_PREFIX}/lib64/libLLVMX86AsmPrinter.a" )
 
 # Import target "LLVMX86Desc" for configuration "Release"
 set_property(TARGET LLVMX86Desc APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)

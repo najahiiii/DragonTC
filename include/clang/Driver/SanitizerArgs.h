@@ -79,6 +79,7 @@ class SanitizerArgs {
 
   bool requiresPIE() const;
   bool needsUnwindTables() const;
+  bool needsLTO() const;
   bool linkCXXRuntimes() const { return LinkCXXRuntimes; }
   bool hasCrossDsoCfi() const { return CfiCrossDso; }
   bool hasAnySanitizer() const { return !Sanitizers.empty(); }

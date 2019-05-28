@@ -1411,7 +1411,7 @@ enum class AutoTypeKeyword {
 ///
 /// Types, once created, are immutable.
 ///
-class Type : public ExtQualsTypeCommonBase {
+class alignas(8) Type : public ExtQualsTypeCommonBase {
 public:
   enum TypeClass {
 #define TYPE(Class, Base) Class,
@@ -4184,6 +4184,41 @@ public:
   static bool classof(const Type *T) { return T->getTypeClass() == Typedef; }
 };
 
+/// Sugar type that represents a type that was qualified by a qualifier written
+/// as a macro invocation.
+class MacroQualifiedType : public Type {
+  friend class ASTContext; // ASTContext creates these.
+
+  QualType UnderlyingTy;
+  const IdentifierInfo *MacroII;
+
+  MacroQualifiedType(QualType UnderlyingTy, QualType CanonTy,
+                     const IdentifierInfo *MacroII)
+      : Type(MacroQualified, CanonTy, UnderlyingTy->isDependentType(),
+             UnderlyingTy->isInstantiationDependentType(),
+             UnderlyingTy->isVariablyModifiedType(),
+             UnderlyingTy->containsUnexpandedParameterPack()),
+        UnderlyingTy(UnderlyingTy), MacroII(MacroII) {
+    assert(isa<AttributedType>(UnderlyingTy) &&
+           "Expected a macro qualified type to only wrap attributed types.");
+  }
+
+public:
+  const IdentifierInfo *getMacroIdentifier() const { return MacroII; }
+  QualType getUnderlyingType() const { return UnderlyingTy; }
+
+  /// Return this attributed type's modified type with no qualifiers attached to
+  /// it.
+  QualType getModifiedType() const;
+
+  bool isSugared() const { return true; }
+  QualType desugar() const;
+
+  static bool classof(const Type *T) {
+    return T->getTypeClass() == MacroQualified;
+  }
+};
+
 /// Represents a `typeof` (or __typeof__) expression (a GCC extension).
 class TypeOfExprType : public Type {
   Expr *TOExpr;
@@ -4762,9 +4797,9 @@ class AutoType : public DeducedType, public llvm::FoldingSetNode {
   friend class ASTContext; // ASTContext creates these
 
   AutoType(QualType DeducedAsType, AutoTypeKeyword Keyword,
-           bool IsDeducedAsDependent)
+           bool IsDeducedAsDependent, bool IsDeducedAsPack)
       : DeducedType(Auto, DeducedAsType, IsDeducedAsDependent,
-                    IsDeducedAsDependent, /*ContainsPack=*/false) {
+                    IsDeducedAsDependent, IsDeducedAsPack) {
     AutoTypeBits.Keyword = (unsigned)Keyword;
   }
 
@@ -4778,14 +4813,16 @@ public:
   }
 
   void Profile(llvm::FoldingSetNodeID &ID) {
-    Profile(ID, getDeducedType(), getKeyword(), isDependentType());
+    Profile(ID, getDeducedType(), getKeyword(), isDependentType(),
+            containsUnexpandedParameterPack());
   }
 
   static void Profile(llvm::FoldingSetNodeID &ID, QualType Deduced,
-                      AutoTypeKeyword Keyword, bool IsDependent) {
+                      AutoTypeKeyword Keyword, bool IsDependent, bool IsPack) {
     ID.AddPointer(Deduced.getAsOpaquePtr());
     ID.AddInteger((unsigned)Keyword);
     ID.AddBoolean(IsDependent);
+    ID.AddBoolean(IsPack);
   }
 
   static bool classof(const Type *T) {
@@ -6805,6 +6842,8 @@ template <typename T> const T *Type::getAsAdjusted() const {
       Ty = P->desugar().getTypePtr();
     else if (const auto *A = dyn_cast<AdjustedType>(Ty))
       Ty = A->desugar().getTypePtr();
+    else if (const auto *M = dyn_cast<MacroQualifiedType>(Ty))
+      Ty = M->desugar().getTypePtr();
     else
       break;
   }
