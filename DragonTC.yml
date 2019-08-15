@@ -1,0 +1,22 @@
+kind: pipeline
+name: KekToolchain
+
+steps:
+- name: How to train your Dragon
+  image: ubuntu:latest
+  environment:
+    GIT_TOKEN:
+      from_secret: GHTOKET
+    TG_TOKEN:
+      from_secret: TGTOKET
+    CHAT_ID:
+      from_secret: CHATID
+  commands:
+    - apt-get update
+    - ./packages.sh
+    - ./build.sh
+trigger:
+  branch:
+    - kitchen
+  event:
+    - push
