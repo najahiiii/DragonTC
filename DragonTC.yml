@@ -3,7 +3,7 @@ name: KekToolchain
 
 steps:
 - name: How to train your Dragon
-  image: ubuntu:latest
+  image: najahi/oven:llvm
   environment:
     GIT_TOKEN:
       from_secret: GHTOKET
@@ -12,8 +12,6 @@ steps:
     CHAT_ID:
       from_secret: CHATID
   commands:
-    - apt-get update
-    - ./packages.sh
     - ./build.sh
 trigger:
   branch:
