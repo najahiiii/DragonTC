@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 git clone https://github.com/dragon-tc-tmp/build --depth=1 build
-git clone https://github.com/llvm/llvm-project --depth=1 llvm-project
+git clone https://github.com/najahiiii/llvm-project --depth=1 llvm-project
 git clone https://github.com/najahiiii/binutils -b 2.32 --depth=1 llvm-project/llvm/tools/binutils
 cd build || exit 1
 bash build_dtc 10.0
